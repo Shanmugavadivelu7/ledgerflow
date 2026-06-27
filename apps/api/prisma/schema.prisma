@@ -18,4 +18,39 @@ model Customer {
   name      String
   phone     String?
   createdAt DateTime @default(now())
+  sales     Sale[]
+
 }
+
+enum PaymentStatus {
+  PAID
+  CREDIT
+}
+
+model Sale {
+  id            String        @id @default(uuid())
+  customerId    String
+  totalAmount   Float
+  paymentStatus PaymentStatus
+
+  customer      Customer      @relation(fields: [customerId], references: [id])
+  items         SaleItem[]
+
+  createdAt     DateTime      @default(now())
+}
+
+model SaleItem {
+  id          String   @id @default(uuid())
+
+  saleId      String
+  productName String
+  quantity    Int
+  unitPrice   Float
+
+  sale        Sale     @relation(fields: [saleId], references: [id])
+
+  createdAt   DateTime @default(now())
+}
+
+
+

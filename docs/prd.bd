@@ -1,0 +1,35 @@
+# Product Requirements Document
+
+## Product
+
+LedgerFlow
+
+## Goal
+
+Help small businesses track sales and customer credit.
+
+## MVP Features
+
+### Authentication
+
+- Login
+
+### Customers
+
+- Add Customer
+- View Customers
+
+### Sales
+
+- Add Sale
+- View Sales
+
+### Credit
+
+- Mark Sale as Credit
+
+### Dashboard
+
+- Today's Sales
+- Total Sales
+- Outstanding Credit
