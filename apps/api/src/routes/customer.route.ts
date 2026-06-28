@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { asyncHandler } from "../utils/async-handler.js";
 
 import {
   createCustomerHandler,
@@ -9,12 +10,12 @@ const router = Router();
 
 router.post(
   "/",
-  createCustomerHandler
+  asyncHandler(createCustomerHandler)
 );
 
 router.get(
   "/",
-  getCustomersHandler
+  asyncHandler(getCustomersHandler)
 );
 
 export default router;

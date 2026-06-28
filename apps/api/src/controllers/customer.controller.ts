@@ -1,5 +1,7 @@
 import type { Request, Response } from "express";
 
+import { createCustomerSchema } from "../validators/customer.validator.js";
+
 import {
   createCustomer,
   getCustomers,
@@ -9,11 +11,11 @@ export async function createCustomerHandler(
   req: Request,
   res: Response
 ) {
-  const { name, phone } = req.body;
+  const data = createCustomerSchema.parse(req.body);
 
   const customer = await createCustomer(
-    name,
-    phone
+    data.name,
+    data.phone
   );
 
   return res.status(201).json(customer);
@@ -25,5 +27,5 @@ export async function getCustomersHandler(
 ) {
   const customers = await getCustomers();
 
-  return res.json(customers);
+  return res.status(200).json(customers);
 }
