@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-
+import { successResponse } from "../utils/response.js";
 import { createCustomerSchema } from "../validators/customer.validator.js";
 
 import {
@@ -17,8 +17,12 @@ export async function createCustomerHandler(
     data.name,
     data.phone
   );
-
-  return res.status(201).json(customer);
+return successResponse(
+  res,
+  customer,
+  "Customer created successfully",
+  201
+);
 }
 
 export async function getCustomersHandler(
@@ -26,6 +30,9 @@ export async function getCustomersHandler(
   res: Response
 ) {
   const customers = await getCustomers();
-
-  return res.status(200).json(customers);
+return successResponse(
+  res,
+  customers,
+  "Customers fetched successfully"
+);
 }
