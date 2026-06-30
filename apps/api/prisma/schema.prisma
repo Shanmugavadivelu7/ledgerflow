@@ -27,30 +27,30 @@ enum PaymentStatus {
   CREDIT
 }
 
+
 model Sale {
   id            String        @id @default(uuid())
   customerId    String
   totalAmount   Float
   paymentStatus PaymentStatus
 
-  customer      Customer      @relation(fields: [customerId], references: [id])
-  items         SaleItem[]
+  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
 
-  createdAt     DateTime      @default(now())
+  items SaleItem[]
+
+  createdAt DateTime @default(now())
 }
 
 model SaleItem {
-  id          String   @id @default(uuid())
+  id          String @id @default(uuid())
 
   saleId      String
   productName String
   quantity    Int
   unitPrice   Float
 
-  sale        Sale     @relation(fields: [saleId], references: [id])
+  sale Sale @relation(fields: [saleId], references: [id], onDelete: Cascade)
 
-  createdAt   DateTime @default(now())
+  createdAt DateTime @default(now())
 }
-
-
 

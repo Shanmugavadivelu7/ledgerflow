@@ -2,12 +2,15 @@ import type {
   NextFunction,
   Request,
   Response,
-  RequestHandler,
 } from "express";
 
-export function asyncHandler(
-  fn: RequestHandler
-): RequestHandler {
+type AsyncHandler = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => Promise<unknown>;
+
+export function asyncHandler(fn: AsyncHandler) {
   return (
     req: Request,
     res: Response,

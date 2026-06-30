@@ -6,6 +6,7 @@ import { notFoundHandler } from "./middlewares/not-found.middleware.js";
 import { errorHandler } from "./middlewares/error.middleware.js";
 import saleRouter from "./routes/sale.route.js";
 import dashboardRouter from "./routes/dashboard.route.js";
+import reportRouter from "./routes/report.route.js";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use("/health", healthRouter);
 app.use("/customers", customerRouter);
 app.use("/sales", saleRouter);
 app.use("/dashboard", dashboardRouter);
+app.use("/reports", reportRouter);
 app.use(notFoundHandler);
 app.use(errorHandler);
 

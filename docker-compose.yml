@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:17-alpine
+
+    container_name: ledgerflow-postgres
+
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Shanmuga@123
+      POSTGRES_DB: ledgerflow_development
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./apps/api
+
+    container_name: ledgerflow-api
+
+    restart: unless-stopped
+
+    depends_on:
+      - postgres
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      DATABASE_URL: postgresql://postgres:Shanmuga%40123@postgres:5432/ledgerflow_development
+
+volumes:
+  postgres_data:
+  

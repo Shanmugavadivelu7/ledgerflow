@@ -1,13 +1,13 @@
 import { Router } from "express";
 
-import { getDashboardHandler } from "../controllers/dashboard.controller.js";
+import { getReportHandler } from "../controllers/report.controller.js";
 import { asyncHandler } from "../utils/async-handler.js";
 
 const router = Router();
 
 router.get(
   "/",
-  asyncHandler(getDashboardHandler)
+  asyncHandler(getReportHandler)
 );
 
 export default router;
