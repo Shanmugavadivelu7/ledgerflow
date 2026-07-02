@@ -1,28 +1,93 @@
 # LedgerFlow
 
-A mobile-first sales and credit tracking application for small businesses.
+A simple sales ledger application for small retail shops built with Flutter and Node.js.
 
-## MVP Features
+## Features
 
-- Customer Management
-- Sales Tracking
-- Credit Sales
 - Dashboard
+- Customer Management
+- Daily Sales
+- Reports
+- Cloud Database
+- REST API
 
 ## Tech Stack
 
 ### Mobile
 - Flutter
+- Dio
+- Material 3
 
-### API
+### Backend
 - Node.js
-- TypeScript
-- Express
+- Express.js
+- Prisma ORM
 
 ### Database
-- PostgreSQL
-- Prisma
+- PostgreSQL (Neon)
 
-## Project Status
+### Deployment
+- Render
+- Docker
 
-Sprint 0 - Repository Initialization Completed
+## Project Structure
+
+LedgerFlow/
+├── apps/
+│   ├── api/
+│   └── mobile/
+├── docker-compose.yml
+└── README.md
+
+## Running Locally
+
+### Backend
+
+```bash
+cd apps/api
+npm install
+npm run dev
+```
+
+### Flutter
+
+```bash
+cd apps/mobile
+flutter pub get
+flutter run
+```
+
+## Environment Variables
+
+Create `.env` inside `apps/api`
+
+```env
+DATABASE_URL=your_database_url
+PORT=3000
+NODE_ENV=development
+```
+
+## API
+
+Base URL
+
+```
+https://ledgerflow-api-w3th.onrender.com
+```
+
+## Screenshots
+
+- Dashboard
+- Customers
+- Add Sale
+- Reports
+
+## Deployment
+
+Backend: Render
+
+Database: Neon PostgreSQL
+
+## Author
+
+Shanmuga Vadivelu
